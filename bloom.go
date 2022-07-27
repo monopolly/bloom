@@ -51,6 +51,7 @@ func (a *Bloomer) Save(fn string) (err error) {
 	if err != nil {
 		return
 	}
+	defer f.Close()
 	_, err = a.db.WriteTo(f)
 	return
 }
@@ -60,6 +61,7 @@ func (a *Bloomer) Load(fn string) (err error) {
 	if err != nil {
 		return
 	}
+	defer f.Close()
 	_, err = a.db.ReadFrom(f)
 	return
 }
